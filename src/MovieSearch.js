@@ -16,6 +16,7 @@ const [movies, setMovies] = useState([]);
           // const length_result = response.data.results.length
         const data = response.data.results
           setMovies(data);
+          setQuery('')
         //   console.log(data.overview);
         } catch (error) {
           console.error(error);
@@ -26,10 +27,16 @@ const [movies, setMovies] = useState([]);
         <>
             <form className="form" onSubmit={searchMovies}>
                     <label htmlFor="query" className="label">Movie Title</label>
-                    <input type="text" name="query" className="input" placeholder="enter movie name here" value={query} onChange={(e) => setQuery(e.target.value)}/>
+                    <input 
+                      type="text" 
+                      name="query" 
+                      className="input" 
+                      placeholder="enter movie name here" 
+                      value={query} 
+                      onChange={(e) => setQuery(e.target.value)}/>
                     <button className="button" type="submit">Submit</button>
                     {/* <button className="button" type="clear">Clear</button> */}
-                    {movies.length === 0 ? <label htmlFor="error" className="label">No record found!</label> : <label htmlFor="error" className="label"></label>}
+                    {movies.length > 0 ? null : <label htmlFor="error" className="label">No record found!</label>}
                 </form>
                 <div className="card-list">
                     {movies.filter(movie => movie.poster_path).map(movie => (
