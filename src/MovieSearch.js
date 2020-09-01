@@ -12,7 +12,8 @@ const [movies, setMovies] = useState([]);
         e.preventDefault()
         try {
           const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=b1b41264c411cdaedd80509c57257edc&language=en-US&query=${query}&page=1&include_adult=false`);
-        //   console.log(response)
+          // console.log(response.data.results)
+          // const length_result = response.data.results.length
         const data = response.data.results
           setMovies(data);
         //   console.log(data.overview);
@@ -27,6 +28,8 @@ const [movies, setMovies] = useState([]);
                     <label htmlFor="query" className="label">Movie Title</label>
                     <input type="text" name="query" className="input" placeholder="enter movie name here" value={query} onChange={(e) => setQuery(e.target.value)}/>
                     <button className="button" type="submit">Submit</button>
+                    {/* <button className="button" type="clear">Clear</button> */}
+                    {movies.length === 0 ? <label htmlFor="error" className="label">No record found!</label> : <label htmlFor="error" className="label"></label>}
                 </form>
                 <div className="card-list">
                     {movies.filter(movie => movie.poster_path).map(movie => (
