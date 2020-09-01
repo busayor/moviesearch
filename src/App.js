@@ -10,7 +10,7 @@ function App() {
       <div id="banner">
         <div id="cloud-scroll">
           <div className="container my-5">
-          <h1>Search Movies/TV Shows</h1>
+          <h1 style={{color: "white"}}>Search Movies/TV Shows</h1>
           <MovieSearch/>
           </div>
         </div>
